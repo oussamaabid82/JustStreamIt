@@ -1,0 +1,124 @@
+/*En-tete*/
+header
+{
+  background: LightSteelBlue;  
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-end; 
+}
+
+.logo
+{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;  
+}
+
+.logo img
+{
+    width: 250px;
+    height: 250px;
+}
+
+nav ul
+{
+    list-style-type: none;
+    display: flex;
+
+}
+
+nav li 
+{
+    margin-right: 20px;
+}
+
+nav a  
+{
+    font-size: 1.3em;
+    color: #181818;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+nav a:hover
+{
+    color: blue;
+    border-bottom: 3px solid blue;
+}
+
+
+body
+{
+    background-color: rgba(179, 196, 25, 0.404);
+    font-family: 'Arial', sans-serif, serif;
+    color: #181818;
+}
+
+.bloc_page
+{
+    width: 900px;
+    margin: auto;
+}
+
+.meuilleur_film
+{
+    display: flex;
+    margin-top: 20px;
+    color: black;
+    font-size: 0.8em;  
+}
+
+.affichage_meuilleur_film
+{
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid black;
+    width : 500px;
+    height: 500px;
+}
+
+.meuilleur_film img
+{
+    border: 1px solid black; 
+    justify-content: right; 
+    display: flex;
+    width: 500px;
+    height: 500px;
+}
+
+
+section
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+}
+
+section h1
+{
+    font-family: 'Arial', sans-serif, serif;
+    font-size: 1.2em;
+    color: #181818;
+    margin-top: 100px ;
+}
+
+article
+{
+    margin-bottom: 150px;
+    border: 1px solid black;
+}
+
+h1
+{
+    justify-content: center
+}
+
+
+.film
+{
+    border: 1px solid black; 
+    justify-content: center;
+    width : auto;
+    height: auto;
+    margin-left: 30px;
+}
