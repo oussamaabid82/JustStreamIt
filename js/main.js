@@ -4,11 +4,19 @@ let films_les_mieux_notes = document.getElementById("film_les_mieux_notes")
 // lien de l'API
 const url = "http://localhost:8000/api/v1";
 
-// Affichage du milleur film
+// Affichage du meilleur film
 async function fetchBestFilm(link, film_number, localHtml){
-    fetch(url + link)
-        .then(response => response.json())
-        .then(response => localHtml.src = (response.results[film_number].image_url))
+	let lien =(url+link);
+	const response = await fetch(lien);
+  	const myJson = await response.json();
+	myJson.results.forEach(element =>{
+		localHtml.src = (myJson.results[film_number].image_url);
+	})
+// Affichage de la description du film
+	const response1 = await fetch(myJson.results[film_number].url);
+	const myJson1 = await response1.json();
+	resume = document.getElementById("resume");
+	resume.textContent = (myJson1.description);
 }
 
 // Création de la premiére section, faire le fetch des images dns l'API et les inserer à la carrousel
@@ -20,36 +28,34 @@ async function fetchFilms(link,page_number,_link_comp,localHtml){
   			const myJson = await response.json(); //extract JSON from the http response
 			myJson.results.forEach(element =>{
 
-				newDiv = document.createElement("div")
-				newDiv.classList.add("films")
-				newPic = document.createElement("picture")
-				newButton = document.createElement("button")
-				newButton.classList.add("button1")
+				newDiv = document.createElement("div");
+				newDiv.classList.add("films");
+				newPic = document.createElement("picture");
+				newButton = document.createElement("button");
+				newButton.classList.add("button1");
 				newButton.textContent = "Détails film"
-				section.appendChild(newDiv)
-				newDiv.appendChild(newPic)
-				newDiv.appendChild(newButton)
+				section.appendChild(newDiv);
+				newDiv.appendChild(newPic);
+				newDiv.appendChild(newButton);
 
-				newImg = document.createElement("img")
+				newImg = document.createElement("img");
 
 				newImg.setAttribute("src", element.image_url);
 
-				newImg.classList.add(localHtml)
-				newPic.appendChild(newImg)
+				newImg.classList.add(localHtml);
+				newPic.appendChild(newImg);
 				});
 			}
 // Création de la carrousel
-let span = document.getElementsByTagName('span')
-let films = document.getElementsByClassName('films')
-console.log(films)
+let span = document.getElementsByTagName('span');
+let films = document.getElementsByClassName('films');
 let films_page = Math.ceil(films.length/4);
-console.log(films_page)
 let l = 0;
 let movePer = 90;
-let maxMove = 550;
+let maxMove = Math.ceil(films.length*12);
 // mobile_view	
 let mob_view = window.matchMedia("(max-width: 768px)");
-if (mob_view.matches)
+if (mob_view.matches);
 	{
 		movePer = 50.36;
 		maxMove = 504;
@@ -77,6 +83,6 @@ if (mob_view.matches)
 	span[0].onclick = ()=>{left_mover();}
 }
 // Appel des fonctions
-fetchBestFilm("/titles/?imdb_score_min=9.6&page=1",0, affichage_meuilleur_film)
+fetchBestFilm("/titles/?imdb_score_min=9.6&page=1",0, affichage_meuilleur_film);
 fetchFilms("/titles/?imdb_score_min=9&page=",13,"", films_les_mieux_notes);
 

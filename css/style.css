@@ -67,7 +67,7 @@
 		}
 		
 		.pic_meuilleur_film{
-			width: 20%;
+			width: 35%;
 			height: 30%;
 			padding: 20px;
 			/*background: green;*/
@@ -75,6 +75,12 @@
 			overflow: hidden;
 			margin-bottom: 20px;
 		}
+		#resume{
+			font-size: larger;
+			display: flex;
+			
+		}
+
 		picture{
 			width: 100%;
 			height: 70%;
