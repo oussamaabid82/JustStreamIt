@@ -17,6 +17,34 @@ async function fetchBestFilm(link, film_number, localHtml){
 	const myJson1 = await response1.json();
 	resume = document.getElementById("resume");
 	resume.textContent = (myJson1.description);
+// Affichage du modal
+	var modal = document.getElementById('myModal');
+	var btn = document.getElementById("button_meuilleur_film");
+	var span = document.getElementsByClassName("close")[0];
+	btn.onclick = function () {
+		modal.style.display = "block";
+	}
+	span.onclick = function () {
+		modal.style.display = "none";
+	}
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}	
+}
+	// inseret les données dans le modal
+	const liste = ["Le Titre du film", "Genre", "Date de sortie", "Rate", 
+	"Score Imdb", "Réalisateur", "Liste des acteurs", "Durée", "Pays d'origine",
+	"Resultat au Box office", "Resumé du film"];
+	text_modal = document.getElementById("modal-content");
+	console.log(myJson1[0])
+	for (let i in myJson1){
+		newP = document.createElement("p");
+		text_modal.appendChild(newP);
+		newP.classList.add("text_modal");
+		newP.textContent = myJson1[i]
+		
+	}	
 }
 
 // Création de la premiére section, faire le fetch des images dns l'API et les inserer à la carrousel
@@ -34,6 +62,21 @@ async function fetchFilms(link,page_number,_link_comp,localHtml){
 				newButton = document.createElement("button");
 				newButton.classList.add("button1");
 				newButton.textContent = "Détails film"
+
+				newDiv1 = document.createElement("div");
+				newDiv.appendChild(newDiv1)
+				newDiv1.setAttribute("id", "myModal")
+				newDiv1.classList.add("modal")
+
+				newDiv2 = document.createElement("div");
+				newDiv1.appendChild(newDiv2)
+				newDiv2.setAttribute("id", "modal-content")
+
+				newSpan = document.createElement("span");
+				newDiv2.appendChild(newSpan)
+				newSpan.classList.add("close")
+				newSpan.textContent = "&times;"
+				
 				section.appendChild(newDiv);
 				newDiv.appendChild(newPic);
 				newDiv.appendChild(newButton);
@@ -47,7 +90,7 @@ async function fetchFilms(link,page_number,_link_comp,localHtml){
 				});
 			}
 // Création de la carrousel
-let span = document.getElementsByTagName('span');
+let span = document.getElementsByClassName('fleche');
 let films = document.getElementsByClassName('films');
 let films_page = Math.ceil(films.length/4);
 let l = 0;
@@ -85,4 +128,3 @@ if (mob_view.matches);
 // Appel des fonctions
 fetchBestFilm("/titles/?imdb_score_min=9.6&page=1",0, affichage_meuilleur_film);
 fetchFilms("/titles/?imdb_score_min=9&page=",13,"", films_les_mieux_notes);
-
