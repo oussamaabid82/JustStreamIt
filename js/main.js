@@ -56,39 +56,42 @@ async function fetchFilms(link,page_number,_link_comp,localHtml){
   			const myJson = await response.json(); //extract JSON from the http response
 			myJson.results.forEach(element =>{
 
+			// Création des balises qui vont recupérer les liens des images
 				newDiv = document.createElement("div");
 				newDiv.classList.add("films");
+				section.appendChild(newDiv);
+
 				newPic = document.createElement("picture");
+				newDiv.appendChild(newPic);
+
+				newImg = document.createElement("img");
+				newImg.setAttribute("src", element.image_url);
+				newImg.classList.add(localHtml);
+				newPic.appendChild(newImg);
+			
+			// Création des balise qui vont afficher les bouttons pour chaque films
 				newButton = document.createElement("button");
 				newButton.classList.add("button1");
 				newButton.textContent = "Détails film"
-
+				newDiv.appendChild(newButton);
+			
+			// Créations des balises qui vont afficher les modals pour chaque films 
 				newDiv1 = document.createElement("div");
-				newDiv.appendChild(newDiv1)
-				newDiv1.setAttribute("id", "myModal")
-				newDiv1.classList.add("modal")
+				newDiv.appendChild(newDiv1);
+				newDiv1.setAttribute("id", "myModal");
+				newDiv1.classList.add("modal");
 
 				newDiv2 = document.createElement("div");
-				newDiv1.appendChild(newDiv2)
-				newDiv2.setAttribute("id", "modal-content")
+				newDiv1.appendChild(newDiv2);
+				newDiv2.setAttribute("id", "modal-content");
 
 				newSpan = document.createElement("span");
-				newDiv2.appendChild(newSpan)
-				newSpan.classList.add("close")
+				newDiv2.appendChild(newSpan);
+				newSpan.classList.add("close");
 				newSpan.textContent = "&times;"
-				
-				section.appendChild(newDiv);
-				newDiv.appendChild(newPic);
-				newDiv.appendChild(newButton);
-
-				newImg = document.createElement("img");
-
-				newImg.setAttribute("src", element.image_url);
-
-				newImg.classList.add(localHtml);
-				newPic.appendChild(newImg);
 				});
 			}
+
 // Création de la carrousel
 let span = document.getElementsByClassName('fleche');
 let films = document.getElementsByClassName('films');
