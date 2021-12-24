@@ -67,8 +67,8 @@
 		}
 		
 		.pic_meuilleur_film{
-			width: 35%;
-			height: 30%;
+			width: 60%;
+			height: 40%;
 			padding: 20px;
 			/*background: green;*/
 			display: flex;
@@ -76,9 +76,15 @@
 			margin-bottom: 20px;
 		}
 		#resume{
-			font-size: larger;
+			font-size: 150%;
+			display: flex;	
+		}
+		p#resume{
 			display: flex;
-			
+			justify-content: center;
+			align-items: center;
+			width: auto;
+			height: 100px;
 		}
 
 		picture{
@@ -91,10 +97,10 @@
 			margin-bottom: 20px;
 		}
 		picture img{
-			width: 100%;
-			
+			width: 100%;	
 		}
 		
+		/*Modal  */
 		button {
 			width: auto;
 			/* background: red; */
@@ -107,21 +113,20 @@
 			font-size: 20px;
 			color: #444;
 			cursor: pointer;
-		}
-		/*Modal  */
-		button #button_meuilleur_film {
-			margin: auto;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			height: 100px;
-			width: 130px;
-			background: thistle;
-			font-family: 'Lato';
-			font-size: 24px;
+			border-radius: 20px;
 		}
 		
+		button#button_meuilleur_film {
+			margin-bottom: 0%;
+			margin-left: 10%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: auto;
+			width: 800px;
+
+		}
+				
 		.modal {
 			display: none;
 			position: fixed;
@@ -134,11 +139,12 @@
 		}
 		
 		#modal-content {
-			background-color: #fefefe;
+			background-color: #bbbd73;
 			margin: 15% auto;
 			border: 1px solid rgb(24, 22, 22);
 			width: auto;
 			height: auto;
+			overflow: auto;
 		}
 		
 		#modal-content p {
@@ -148,7 +154,7 @@
 		}
 		
 		.close {
-			color: #aaa;
+			color: rgb(29, 28, 28);
 			position: relative;
 			float: right;
 			cursor: pointer;
