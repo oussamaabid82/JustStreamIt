@@ -18,6 +18,8 @@ async function fetchBestFilm(link, film_number, localHtml){
 	const myJson1 = await response1.json();
 	resume = document.getElementById("resume");
 	resume.textContent = (myJson1.description);
+	title = document.getElementById("titre")
+	title.textContent = (myJson1.title)
 
 // Affichage du modal
 	var modal = document.getElementById('myModal');
@@ -55,19 +57,127 @@ async function fetchBestFilm(link, film_number, localHtml){
 	}
 	}	
 
+// ##########################################################################################################################################
 
 // Création de la premiére section, faire le fetch des images dns l'API et les inserer à la carrousel
-async function fetchFilms(link,page_number,_link_comp,localHtml){
+async function filmsMieuxNote(link,page_number,_link_comp,localHtml){
     for (let i = 1; i < page_number; i ++){
 		let lien = (url+link+i)
 			const response = await fetch(lien);
   			const myJson = await response.json();
 			myJson.results.forEach(element =>{
-
+			
 		// Création des balises qui vont recupérer les liens des images
 				newDiv = document.createElement("div");
 				newDiv.classList.add("films");
 				section.appendChild(newDiv);
+
+				newPic = document.createElement("picture");
+				newDiv.appendChild(newPic);
+
+				newImg = document.createElement("img");
+
+				newImg.setAttribute("src", element.image_url);
+				
+				newPic.appendChild(newImg);
+			
+		// Création des balise qui vont afficher les bouttons pour chaque films
+				newButton = document.createElement("button");
+				newButton.classList.add("button_1");
+				newButton.textContent = "Détails film"
+				newDiv.appendChild(newButton);
+			
+		// Créations des balises qui vont afficher les modals pour chaque films 
+				newDiv1 = document.createElement("div");
+				newDiv.appendChild(newDiv1);
+				newDiv1.setAttribute("id", "myModal_1");
+				newDiv1.classList.add("modal");
+
+				newDiv2 = document.createElement("div");
+				newDiv1.appendChild(newDiv2);
+				newDiv2.setAttribute("id", "modal-content");
+
+				newP = document.createElement("p");
+				newDiv1.appendChild(newP);
+				newP.classList.add("text_modal");
+				newP.textContent = "frfrfrfrfrfrfrfrfrfrfrfrfrf"
+
+				newSpan = document.createElement("span");
+				newDiv2.appendChild(newSpan);
+				newSpan.classList.add("close");
+				newSpan.textContent = "&times;"
+
+				// Affichage du modal
+				// var modal = document.getElementById('myModal_1');
+				// var btn = document.getElementById("button_1");
+				// var span_1 = document.getElementsByClassName("close")[0];
+				// btn.onclick = function () {
+				// 	modal.style.display = "block";
+				// }
+				// span_1.onclick = function () {
+				// 	modal.style.display = "none";
+				// }
+				// window.onclick = function (event) {
+				// 	if (event.target == modal) {
+				// 		modal.style.display = "none";
+				// 		}	
+				// 	}
+				});
+		}
+		// Création de la carrousel de la section 1
+		let span = document.getElementsByClassName('fleche');
+		let films = document.getElementsByClassName('films');
+		let films_page = 25;
+		let l = 0;
+		let movePer = 90;
+		let maxMove = 250;
+
+		// mobile_view	
+		let mob_view = window.matchMedia("(max-width: 768px)");
+		if (mob_view.matches);
+			{
+				movePer = 50.36;
+				maxMove = 200;
+			}
+			let right_mover = ()=>{
+				l = l + movePer;
+				if (films == 1){l = 0;}
+				for(const i of films)
+			{
+				if (l > maxMove){l = l - movePer;}
+				i.style.left = '-' + l + '%';
+			}
+
+			}
+			let left_mover = ()=>{
+				l = l - movePer;
+				if (l<=0){l = 0;}
+				for(const i of films){
+					if (films_page>1){
+						i.style.left = '-' + l + '%';
+					}
+				}
+			}
+			span[1].onclick = ()=>{right_mover();}
+			span[0].onclick = ()=>{left_mover();}
+		
+}
+
+
+
+// ##########################################################################################################################################
+// Création de la troisiéme section, faire le fetch des images dans l'API et les inserer à la carrousel
+async function filmsAnimation2020(link,page_number,_link_comp,localHtml){
+    for (let i = 1; i < page_number; i ++){
+		let lien = (url+link+i)
+			const response = await fetch(lien);
+  			const myJson = await response.json();
+			myJson.results.forEach(element =>{
+			
+		// Création des balises qui vont recupérer les liens des images
+				newDiv = document.createElement("div");
+				newDiv.classList.add("filmsAnimation");
+				section1.appendChild(newDiv);
 
 				newPic = document.createElement("picture");
 				newDiv.appendChild(newPic);
@@ -79,14 +189,14 @@ async function fetchFilms(link,page_number,_link_comp,localHtml){
 			
 		// Création des balise qui vont afficher les bouttons pour chaque films
 				newButton = document.createElement("button");
-				newButton.classList.add("button1");
+				newButton.classList.add("button_1");
 				newButton.textContent = "Détails film"
 				newDiv.appendChild(newButton);
 			
 		// Créations des balises qui vont afficher les modals pour chaque films 
 				newDiv1 = document.createElement("div");
 				newDiv.appendChild(newDiv1);
-				newDiv1.setAttribute("id", "myModal");
+				newDiv1.setAttribute("id", "myModal_1");
 				newDiv1.classList.add("modal");
 
 				newDiv2 = document.createElement("div");
@@ -96,53 +206,78 @@ async function fetchFilms(link,page_number,_link_comp,localHtml){
 				newP = document.createElement("p");
 				newDiv1.appendChild(newP);
 				newP.classList.add("text_modal");
-				newP.textContent = "myJson1[i]"
+				newP.textContent = "frfrfrfrfrfrfrfrfrfrfrfrfrf"
 
 				newSpan = document.createElement("span");
 				newDiv2.appendChild(newSpan);
 				newSpan.classList.add("close");
 				newSpan.textContent = "&times;"
+
+				// Affichage du modal
+				// var modal = document.getElementById('myModal_1');
+				// var btn = document.getElementById("button_1");
+				// var span_1 = document.getElementsByClassName("close")[0];
+				// btn.onclick = function () {
+				// 	modal.style.display = "block";
+				// }
+				// span_1.onclick = function () {
+				// 	modal.style.display = "none";
+				// }
+				// window.onclick = function (event) {
+				// 	if (event.target == modal) {
+				// 		modal.style.display = "none";
+				// 		}	
+				// 	}
 				});
+		}
+		// Création de la carrousel de la section 1
+		let span = document.getElementsByClassName('fleche1');
+		let films = document.getElementsByClassName('filmsAnimation');
+		let films_page = 25;
+		let l = 0;
+		let movePer = 90;
+		let maxMove = 250;
+
+		// mobile_view	
+		let mob_view = window.matchMedia("(max-width: 768px)");
+		if (mob_view.matches);
+			{
+				movePer = 50.36;
+				maxMove = 200;
 			}
-
-// Création de la carrousel
-let span = document.getElementsByClassName('fleche');
-let films = document.getElementsByClassName('films');
-let films_page = Math.ceil(films.length/4);
-let l = 0;
-let movePer = 90;
-let maxMove = Math.ceil(films.length*12);
-
-// mobile_view	
-let mob_view = window.matchMedia("(max-width: 768px)");
-if (mob_view.matches);
-	{
-		movePer = 50.36;
-		maxMove = 504;
-	}
-	let right_mover = ()=>{
-		l = l + movePer;
-		if (films == 1){l = 0;}
-		for(const i of films)
-	{
-		if (l > maxMove){l = l - movePer;}
-		i.style.left = '-' + l + '%';
-	}
-
-	}
-	let left_mover = ()=>{
-		l = l - movePer;
-		if (l<=0){l = 0;}
-		for(const i of films){
-			if (films_page>1){
+			let right_mover = ()=>{
+				l = l + movePer;
+				if (films == 1){l = 0;}
+				for(const i of films)
+			{
+				if (l > maxMove){l = l - movePer;}
 				i.style.left = '-' + l + '%';
 			}
-		}
-	}
-	span[1].onclick = ()=>{right_mover();}
-	span[0].onclick = ()=>{left_mover();}
+
+			}
+			let left_mover = ()=>{
+				l = l - movePer;
+				if (l<=0){l = 0;}
+				for(const i of films){
+					if (films_page>1){
+						i.style.left = '-' + l + '%';
+					}
+				}
+			}
+			span[1].onclick = ()=>{right_mover();}
+			span[0].onclick = ()=>{left_mover();}
+
 }
+			
+
+// ##########################################################################################################################################
+
+
+
+
+
 
 // Appel des fonctions
 fetchBestFilm("/titles/?imdb_score_min=9.6&page=1",0, affichage_meuilleur_film);
-fetchFilms("/titles/?imdb_score_min=9&page=",13,"", films_les_mieux_notes);
+filmsMieuxNote("/titles/?imdb_score_min=9&page=",3,"", "films_les_mieux_notes");
+filmsAnimation2020("/titles/?year=2020&min_year=&max_year=&genre=Animation&genre_contains=&page=",6,"&year=2020","meuilleur_films_d_animation");
