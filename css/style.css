@@ -123,6 +123,17 @@
 			left: 0;
 			transition: 0.5s;
 		}
+/*Section Meuilleur films biography ########## */
+		.filmsBiography{
+			min-width: 30%;
+			height: 80%;
+			background: rgb(204, 186, 186);
+			margin:  0 20px 0 0;
+			border-radius: 20px;
+			position: relative;
+			left: 0;
+			transition: 0.5s;
+		}
 /* Film le mieux noté #########################*/
 		picture.pic_meuilleur_film{
 			width: 40%;
