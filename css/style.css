@@ -101,8 +101,19 @@
 		picture img{
 			width: 100%;	
 		}
-/*Section Meuilleur films d'animation de l'année 2020  */
+/*Section Meuilleur films d'animation ########## */
 		.filmsAnimation{
+			min-width: 30%;
+			height: 80%;
+			background: rgb(204, 186, 186);
+			margin:  0 20px 0 0;
+			border-radius: 20px;
+			position: relative;
+			left: 0;
+			transition: 0.5s;
+		}
+/*Section Meuilleur films d'action ########## */
+		.filmAction{
 			min-width: 30%;
 			height: 80%;
 			background: rgb(204, 186, 186);

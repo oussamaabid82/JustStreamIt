@@ -1,5 +1,7 @@
 let film_mieux_note = document.getElementById("affiche_films_les_mieux_notés")
 let films_les_mieux_notes = document.getElementById("film_les_mieux_notes")
+let meuilleur_films_d_animation = document.getElementById("meuilleur_films_d_animation")
+let meuilleur_films_action = document.getElementById("filmsAction")
 
 // lien de l'API
 const url = "http://localhost:8000/api/v1";
@@ -57,7 +59,7 @@ async function fetchBestFilm(link, film_number, localHtml){
 	}
 	}	
 
-// ##########################################################################################################################################
+// #######################################################################################################################################################
 
 // Création de la premiére section, faire le fetch des images dns l'API et les inserer à la carrousel
 async function filmsMieuxNote(link,page_number,_link_comp,localHtml){
@@ -163,10 +165,9 @@ async function filmsMieuxNote(link,page_number,_link_comp,localHtml){
 		
 }
 
+// #######################################################################################################################################################
+// Création de la deuxiéme section, faire le fetch des images dans l'API et les inserer à la carrousel
 
-
-// ##########################################################################################################################################
-// Création de la troisiéme section, faire le fetch des images dans l'API et les inserer à la carrousel
 async function filmsAnimation2020(link,page_number,_link_comp,localHtml){
     for (let i = 1; i < page_number; i ++){
 		let lien = (url+link+i)
@@ -230,7 +231,7 @@ async function filmsAnimation2020(link,page_number,_link_comp,localHtml){
 				// 	}
 				});
 		}
-		// Création de la carrousel de la section 1
+		// Création de la carrousel de la section 2
 		let span = document.getElementsByClassName('fleche1');
 		let films = document.getElementsByClassName('filmsAnimation');
 		let films_page = 25;
@@ -266,18 +267,117 @@ async function filmsAnimation2020(link,page_number,_link_comp,localHtml){
 			}
 			span[1].onclick = ()=>{right_mover();}
 			span[0].onclick = ()=>{left_mover();}
-
 }
 			
 
-// ##########################################################################################################################################
+// #######################################################################################################################################################
 
+// Création de la troisiéme section, faire le fetch des images dans l'API et les inserer à la carrousel
 
+async function filmsAction(link,page_number,_link_comp,localHtml){
+    for (let i = 1; i < page_number; i ++){
+		let lien = (url+link+i)
+			const response = await fetch(lien);
+  			const myJson = await response.json();
+			myJson.results.forEach(element =>{
+			
+		// Création des balises qui vont recupérer les liens des images
+				newDiv = document.createElement("div");
+				newDiv.classList.add("filmAction");
+				section2.appendChild(newDiv);
 
+				newPic = document.createElement("picture");
+				newDiv.appendChild(newPic);
 
+				newImg = document.createElement("img");
+				newImg.setAttribute("src", element.image_url);
+				newImg.classList.add(localHtml);
+				newPic.appendChild(newImg);
+			
+		// Création des balise qui vont afficher les bouttons pour chaque films
+				newButton = document.createElement("button");
+				newButton.classList.add("button_1");
+				newButton.textContent = "Détails film"
+				newDiv.appendChild(newButton);
+			
+		// Créations des balises qui vont afficher les modals pour chaque films 
+				newDiv1 = document.createElement("div");
+				newDiv.appendChild(newDiv1);
+				newDiv1.setAttribute("id", "myModal_1");
+				newDiv1.classList.add("modal");
 
+				newDiv2 = document.createElement("div");
+				newDiv1.appendChild(newDiv2);
+				newDiv2.setAttribute("id", "modal-content");
 
+				newP = document.createElement("p");
+				newDiv1.appendChild(newP);
+				newP.classList.add("text_modal");
+				newP.textContent = "frfrfrfrfrfrfrfrfrfrfrfrfrf"
+
+				newSpan = document.createElement("span");
+				newDiv2.appendChild(newSpan);
+				newSpan.classList.add("close");
+				newSpan.textContent = "&times;"
+
+				// Affichage du modal
+				// var modal = document.getElementById('myModal_1');
+				// var btn = document.getElementById("button_1");
+				// var span_1 = document.getElementsByClassName("close")[0];
+				// btn.onclick = function () {
+				// 	modal.style.display = "block";
+				// }
+				// span_1.onclick = function () {
+				// 	modal.style.display = "none";
+				// }
+				// window.onclick = function (event) {
+				// 	if (event.target == modal) {
+				// 		modal.style.display = "none";
+				// 		}	
+				// 	}
+				});
+		}
+		// Création de la carrousel de la section 3
+		let span = document.getElementsByClassName('fleche2');
+		let films = document.getElementsByClassName('filmAction');
+		let films_page = 25;
+		let l = 0;
+		let movePer = 90;
+		let maxMove = 250;
+
+		// mobile_view	
+		let mob_view = window.matchMedia("(max-width: 768px)");
+		if (mob_view.matches);
+			{
+				movePer = 50.36;
+				maxMove = 200;
+			}
+			let right_mover = ()=>{
+				l = l + movePer;
+				if (films == 1){l = 0;}
+				for(const i of films)
+			{
+				if (l > maxMove){l = l - movePer;}
+				i.style.left = '-' + l + '%';
+			}
+
+			}
+			let left_mover = ()=>{
+				l = l - movePer;
+				if (l<=0){l = 0;}
+				for(const i of films){
+					if (films_page>1){
+						i.style.left = '-' + l + '%';
+					}
+				}
+			}
+			span[1].onclick = ()=>{right_mover();}
+			span[0].onclick = ()=>{left_mover();}
+}
+
+// #######################################################################################################################################################
 // Appel des fonctions
 fetchBestFilm("/titles/?imdb_score_min=9.6&page=1",0, affichage_meuilleur_film);
-filmsMieuxNote("/titles/?imdb_score_min=9&page=",3,"", "films_les_mieux_notes");
-filmsAnimation2020("/titles/?year=2020&min_year=&max_year=&genre=Animation&genre_contains=&page=",6,"&year=2020","meuilleur_films_d_animation");
+filmsMieuxNote("/titles/?imdb_score_min=9&page=",3,"", films_les_mieux_notes);
+filmsAnimation2020("/titles/?genre=Animation&imdb_score=&imdb_score_max=&imdb_score_min=8.5&page=",4,"",meuilleur_films_d_animation);
+filmsAction("/titles/?genre=Action&imdb_score=&imdb_score_max=&imdb_score_min=8.8&page=",3,meuilleur_films_action)
