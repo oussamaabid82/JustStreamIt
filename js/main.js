@@ -64,6 +64,7 @@ async function fetchBestFilm(link, film_number, localHtml){
 
 // Création de la premiére section, faire le fetch des images dns l'API et les inserer à la carrousel
 async function filmsMieuxNote(link,page_number,_link_comp,localHtml){
+	num = 0
     for (let i = 1; i < page_number; i ++){
 		let lien = (url+link+i)
 			const response = await fetch(lien);
@@ -79,29 +80,28 @@ async function filmsMieuxNote(link,page_number,_link_comp,localHtml){
 
 				newImg = document.createElement("img");
 				newImg.setAttribute("src", element.image_url);
-				
 				newPic.appendChild(newImg);
 			
 		// Création des balise qui vont afficher les bouttons pour chaque films
 				newButton = document.createElement("button");
-				newButton.setAttribute("id", "button1");
+				newButton.setAttribute("id", "button"+num++);
 				newButton.textContent = "Détails film"
 				newDiv.appendChild(newButton);
 			
 		// Créations des balises qui vont afficher les modals pour chaque films 
 				newDiv1 = document.createElement("div");
-				newDiv.appendChild(newDiv1);
+				newPic.appendChild(newDiv1);
 				newDiv1.setAttribute("id", "myModal1");
 				newDiv1.classList.add("modal1");
 
 				newDiv2 = document.createElement("div");
 				newDiv1.appendChild(newDiv2);
-				newDiv2.setAttribute("id", "modal-content");
+				newDiv2.setAttribute("id", "modal-content1");
 
 				newSpan = document.createElement("span");
 				newDiv2.appendChild(newSpan);
 				newSpan.classList.add("close1");
-				newSpan.textContent = "&times;"
+				newSpan.textContent = "&#215;"
 
 				// Liste des titres
 				const liste_titres = ["Le Titre du film: ", "Genre: ", "Date de sortie: ", "Rate: ", "Score Imdb: ", 
@@ -110,14 +110,15 @@ async function filmsMieuxNote(link,page_number,_link_comp,localHtml){
 
 				for (let i in liste_titres){
 					newP = document.createElement("p");
-					newDiv1.appendChild(newP);
+					newDiv2.appendChild(newP);
 					newP.classList.add("text_modal");
 					newP.textContent = liste_titres[i] //+ liste[i] 
-					}
-
+				}
 				// Affichage du modal
 				var modal = document.getElementById('myModal1');
-				var btn = document.getElementById("button1");
+				var btn = document.getElementById("button"+(num-1));
+				
+				
 				var close = document.getElementsByClassName("close1")[0];
 				btn.onclick = function () {
 					modal.style.display = "block";
@@ -129,9 +130,9 @@ async function filmsMieuxNote(link,page_number,_link_comp,localHtml){
 					if (event.target == modal) {
 						modal.style.display = "none";
 						}	
-					}
+				}
 			});
-
+	
 	}
 		// Création de la carrousel de la section 1
 		let span = document.getElementsByClassName('fleche');
