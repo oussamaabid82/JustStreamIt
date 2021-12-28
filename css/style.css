@@ -31,6 +31,9 @@
 		    background: #6773ff;
 		    color: white;
 		}
+		.page_header{
+			background-color: #9095c7;
+		} 
 /* main contien la partie qui affiche les affiches de tous le films */
 		main{
 			width: auto;
@@ -63,7 +66,7 @@
 		    display: inline-block;
 		    line-height: 19px;
 		    text-align: center;
-		    border-radius: 3px;
+		    border-radius: 10px;
 		}
 /* Film le mieux noté #########################*/
 		picture.pic_meuilleur_film{
@@ -95,9 +98,8 @@
 		section .films{
 			min-width: 30%;
 			height: 80%;
-			background: rgb(204, 186, 186);
+			background: rgb(3, 3, 3);
 			margin:  0 20px 0 0;
-			border-radius: 20px;
 			position: relative;
 			left: 0;
 			transition: 0.5s;
@@ -105,7 +107,7 @@
 		picture{
 			width: 100%;
 			height: 100%;
-			padding: 20px;
+			padding: 5px;
 			/* background: rgb(234, 238, 234); */
 			display: flex;
 			overflow: hidden;
@@ -118,9 +120,8 @@
 		.filmsAnimation{
 			min-width: 30%;
 			height: 80%;
-			background: rgb(204, 186, 186);
+			background: rgb(0, 0, 0);
 			margin:  0 20px 0 0;
-			border-radius: 20px;
 			position: relative;
 			left: 0;
 			transition: 0.5s;
@@ -129,9 +130,8 @@
 		.filmAction{
 			min-width: 30%;
 			height: 80%;
-			background: rgb(204, 186, 186);
+			background: rgb(0, 0, 0);
 			margin:  0 20px 0 0;
-			border-radius: 20px;
 			position: relative;
 			left: 0;
 			transition: 0.5s;
@@ -140,9 +140,8 @@
 		.filmsBiography{
 			min-width: 30%;
 			height: 80%;
-			background: rgb(204, 186, 186);
+			background: rgb(0, 0, 0);
 			margin:  0 20px 0 0;
-			border-radius: 20px;
 			position: relative;
 			left: 0;
 			transition: 0.5s;
@@ -224,40 +223,6 @@
 			padding: 0 10px 0 0;
 			font-weight: bold;
 		}
-/* Modal section 1 ######################################################### */
-		#myModal1.modal1 {
-			display: none;
-			position: fixed;
-			z-index: 1;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			background-color: rgba(0,0,0,0.4);
-		}
-		#modal-content1 p {
-			text-align: left;
-			font-size: 20px;
-			font-family: 'Lato';
-		}
-		#modal-content1 {
-			background-color: #bbbd73;
-			margin: 15% auto;
-			border: 1px solid rgb(24, 22, 22);
-			width: auto;
-			height: auto;
-			overflow: auto;
-		}
-		.close1 {
-			color: rgb(29, 28, 28);
-			position: relative;
-			float: right;
-			cursor: pointer;
-			font-size: 50px;
-			padding: 0 10px 0 0;
-			font-weight: bold;
-		}
-
 /* ######################################################### */
 		@media (max-width: 768px) {
 			.text h1{

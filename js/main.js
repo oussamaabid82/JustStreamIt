@@ -21,8 +21,8 @@ async function fetchBestFilm(link, film_number, localHtml){
 	const myJson1 = await response1.json();
 	resume = document.getElementById("resume");
 	resume.textContent = (myJson1.description);
-	title = document.getElementById("titre")
-	title.textContent = (myJson1.title)
+	title = document.getElementById("titre");
+	title.textContent = (myJson1.title);
 
 // inseret les données dans le modal
 	// Liste des données recupérer de l'API
@@ -40,7 +40,7 @@ async function fetchBestFilm(link, film_number, localHtml){
 		newP = document.createElement("p");
 		text_modal.appendChild(newP);
 		newP.classList.add("text_modal");
-		newP.textContent = liste_titres[i] + liste[i] 
+		newP.textContent = liste_titres[i] + liste[i]; 
 	}
 	// Affichage du modal
 	var modal = document.getElementById('myModal');
@@ -57,7 +57,6 @@ async function fetchBestFilm(link, film_number, localHtml){
 			modal.style.display = "none";
 		}	
 	}
-
 }	
 
 // #######################################################################################################################################################
@@ -70,6 +69,7 @@ async function filmsMieuxNote(link,page_number,_link_comp,localHtml){
 			const response = await fetch(lien);
   			const myJson = await response.json();
 			myJson.results.forEach(element =>{
+				
 		// Création des balises qui vont recupérer les liens des images
 				newDiv = document.createElement("div");
 				newDiv.classList.add("films");
@@ -81,59 +81,8 @@ async function filmsMieuxNote(link,page_number,_link_comp,localHtml){
 				newImg = document.createElement("img");
 				newImg.setAttribute("src", element.image_url);
 				newPic.appendChild(newImg);
-			
-		// Création des balise qui vont afficher les bouttons pour chaque films
-				newButton = document.createElement("button");
-				newButton.setAttribute("id", "button"+num++);
-				newButton.textContent = "Détails film"
-				newDiv.appendChild(newButton);
-			
-		// Créations des balises qui vont afficher les modals pour chaque films 
-				newDiv1 = document.createElement("div");
-				newPic.appendChild(newDiv1);
-				newDiv1.setAttribute("id", "myModal1");
-				newDiv1.classList.add("modal1");
-
-				newDiv2 = document.createElement("div");
-				newDiv1.appendChild(newDiv2);
-				newDiv2.setAttribute("id", "modal-content1");
-
-				newSpan = document.createElement("span");
-				newDiv2.appendChild(newSpan);
-				newSpan.classList.add("close1");
-				newSpan.textContent = "&#215;"
-
-				// Liste des titres
-				const liste_titres = ["Le Titre du film: ", "Genre: ", "Date de sortie: ", "Rate: ", "Score Imdb: ", 
-				"Réalisateur: ", "Liste des acteurs: ",  "Durée: ", "Pays d'origine: ",
-				"Résultat au Box office: ", "Resumé du film: "]
-
-				for (let i in liste_titres){
-					newP = document.createElement("p");
-					newDiv2.appendChild(newP);
-					newP.classList.add("text_modal");
-					newP.textContent = liste_titres[i] //+ liste[i] 
-				}
-				// Affichage du modal
-				var modal = document.getElementById('myModal1');
-				var btn = document.getElementById("button"+(num-1));
-				
-				
-				var close = document.getElementsByClassName("close1")[0];
-				btn.onclick = function () {
-					modal.style.display = "block";
-				}
-				close.onclick = function () {
-					modal.style.display = "none";
-				}
-				window.onclick = function (event) {
-					if (event.target == modal) {
-						modal.style.display = "none";
-						}	
-				}
-			});
-	
-	}
+	});	
+}
 		// Création de la carrousel de la section 1
 		let span = document.getElementsByClassName('fleche');
 		let films = document.getElementsByClassName('films');
@@ -195,56 +144,7 @@ async function filmsAnimation2020(link,page_number,_link_comp,localHtml){
 				newImg.setAttribute("src", element.image_url);
 				newImg.classList.add(localHtml);
 				newPic.appendChild(newImg);
-			
-		// Création des balise qui vont afficher les bouttons pour chaque films
-				newButton = document.createElement("button");
-				newButton.classList.add("button2");
-				newButton.textContent = "Détails film"
-				newDiv.appendChild(newButton);
-			
-		// Créations des balises qui vont afficher les modals pour chaque films 
-				newDiv1 = document.createElement("div");
-				newDiv.appendChild(newDiv1);
-				newDiv1.setAttribute("id", "myModal2");
-				newDiv1.classList.add("modal");
-
-				newDiv2 = document.createElement("div");
-				newDiv1.appendChild(newDiv2);
-				newDiv2.setAttribute("id", "modal-content");
-
-				newSpan = document.createElement("span");
-				newDiv2.appendChild(newSpan);
-				newSpan.classList.add("close");
-				newSpan.textContent = "&times;"
-
-				// Liste des titres
-				const liste_titres = ["Le Titre du film: ", "Genre: ", "Date de sortie: ", "Rate: ", "Score Imdb: ", 
-				"Réalisateur: ", "Liste des acteurs: ",  "Durée: ", "Pays d'origine: ",
-				"Résultat au Box office: ", "Resumé du film: "]
-
-				for (let i in liste_titres){
-					newP = document.createElement("p");
-					newDiv1.appendChild(newP);
-					newP.classList.add("text_modal");
-					newP.textContent = liste_titres[i] //+ liste[i] 
-					}
-
-				// Affichage du modal
-				// var modal = document.getElementById('myModal_1');
-				// var btn = document.getElementById("button_1");
-				// var span_1 = document.getElementsByClassName("close")[0];
-				// btn.onclick = function () {
-				// 	modal.style.display = "block";
-				// }
-				// span_1.onclick = function () {
-				// 	modal.style.display = "none";
-				// }
-				// window.onclick = function (event) {
-				// 	if (event.target == modal) {
-				// 		modal.style.display = "none";
-				// 		}	
-				// 	}
-				});
+			});
 		}
 		// Création de la carrousel de la section 2
 		let span = document.getElementsByClassName('fleche1');
@@ -283,7 +183,6 @@ async function filmsAnimation2020(link,page_number,_link_comp,localHtml){
 			span[1].onclick = ()=>{right_mover();}
 			span[0].onclick = ()=>{left_mover();}
 }
-			
 
 // #######################################################################################################################################################
 
@@ -308,57 +207,8 @@ async function filmsAction(link,page_number,_link_comp,localHtml){
 				newImg.setAttribute("src", element.image_url);
 				newImg.classList.add(localHtml);
 				newPic.appendChild(newImg);
-			
-		// Création des balise qui vont afficher les bouttons pour chaque films
-				newButton = document.createElement("button");
-				newButton.classList.add("button3");
-				newButton.textContent = "Détails film"
-				newDiv.appendChild(newButton);
-			
-		// Créations des balises qui vont afficher les modals pour chaque films 
-				newDiv1 = document.createElement("div");
-				newDiv.appendChild(newDiv1);
-				newDiv1.setAttribute("id", "myModal3");
-				newDiv1.classList.add("modal");
-
-				newDiv2 = document.createElement("div");
-				newDiv1.appendChild(newDiv2);
-				newDiv2.setAttribute("id", "modal-content");
-
-				newSpan = document.createElement("span");
-				newDiv2.appendChild(newSpan);
-				newSpan.classList.add("close");
-				newSpan.textContent = "&times;"
-
-				// Liste des titres
-				const liste_titres = ["Le Titre du film: ", "Genre: ", "Date de sortie: ", "Rate: ", "Score Imdb: ", 
-				"Réalisateur: ", "Liste des acteurs: ",  "Durée: ", "Pays d'origine: ",
-				"Résultat au Box office: ", "Resumé du film: "]
-
-				for (let i in liste_titres){
-					newP = document.createElement("p");
-					newDiv1.appendChild(newP);
-					newP.classList.add("text_modal");
-					newP.textContent = liste_titres[i] //+ liste[i] 
-					}
-
-				// Affichage du modal
-				// var modal = document.getElementById('myModal_1');
-				// var btn = document.getElementById("button_1");
-				// var span_1 = document.getElementsByClassName("close")[0];
-				// btn.onclick = function () {
-				// 	modal.style.display = "block";
-				// }
-				// span_1.onclick = function () {
-				// 	modal.style.display = "none";
-				// }
-				// window.onclick = function (event) {
-				// 	if (event.target == modal) {
-				// 		modal.style.display = "none";
-				// 		}	
-				// 	}
-				});
-		}
+			});
+		};
 		// Création de la carrousel de la section 3
 		let span = document.getElementsByClassName('fleche2');
 		let films = document.getElementsByClassName('filmAction');
@@ -419,13 +269,7 @@ async function filmsBiography(link,page_number,_link_comp,localHtml){
 				newImg.setAttribute("src", element.image_url);
 				newImg.classList.add(localHtml);
 				newPic.appendChild(newImg);
-			
-		// Création des balise qui vont afficher les bouttons pour chaque films
-				newButton = document.createElement("button");
-				newButton.classList.add("button4");
-				newButton.textContent = "Détails film"
-				newDiv.appendChild(newButton);
-			
+
 		// Créations des balises qui vont afficher les modals pour chaque films 
 				newDiv1 = document.createElement("div");
 				newDiv.appendChild(newDiv1);
@@ -440,35 +284,7 @@ async function filmsBiography(link,page_number,_link_comp,localHtml){
 				newDiv2.appendChild(newSpan);
 				newSpan.classList.add("close");
 				newSpan.textContent = "&times;"
-
-				// Liste des titres
-				const liste_titres = ["Le Titre du film: ", "Genre: ", "Date de sortie: ", "Rate: ", "Score Imdb: ", 
-				"Réalisateur: ", "Liste des acteurs: ",  "Durée: ", "Pays d'origine: ",
-				"Résultat au Box office: ", "Resumé du film: "]
-
-				for (let i in liste_titres){
-					newP = document.createElement("p");
-					newDiv1.appendChild(newP);
-					newP.classList.add("text_modal");
-					newP.textContent = liste_titres[i] //+ liste[i] 
-					}
-
-				// Affichage du modal
-				// var modal = document.getElementById('myModal_1');
-				// var btn = document.getElementById("button_1");
-				// var span_1 = document.getElementsByClassName("close")[0];
-				// btn.onclick = function () {
-				// 	modal.style.display = "block";
-				// }
-				// span_1.onclick = function () {
-				// 	modal.style.display = "none";
-				// }
-				// window.onclick = function (event) {
-				// 	if (event.target == modal) {
-				// 		modal.style.display = "none";
-				// 		}	
-				// 	}
-				});
+			});
 		}
 		// Création de la carrousel de la section 3
 		let span = document.getElementsByClassName('fleche3');
