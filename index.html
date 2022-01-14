@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JustStreamIt</title>
+	<link rel="stylesheet" type="text/css" href="static/css/style.css">
+	<script type="text/javascript" src="static/js/main.js" defer></script>
+</head>
+
+
+<body>
+<!-- En-tete de la page -->
+	<header class= "page_header">
+		<div class="logo">
+			<img src="static/img/logo.png" alt="logo_de_JustStreamIt">
+		</div>
+
+		<nav>
+			<ul>
+				<li class="button"><a href="">Acceuil</a></li>
+				<li class="button"><a href="">Catégorie</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+<!-- ##################################################################################### -->
+<!--Code pour le meuilleur film  -->
+		<header>
+			<h1>Film le mieux noté </h1>
+		</header>
+		<div class="meuilleur_film">
+			<picture class="pic_meuilleur_film">
+				<img src="" alt="affiche_meuilleur_film" id="affichage_meuilleur_film">
+			
+			<!-- Modal du meuilleur film -->
+				<div id="myModal" class="modal">
+					<div id="modal-content">
+						<span class="close">&#215;</span>
+					</div>
+				</div>
+			</picture>
+			<!--Description du meuilleur film  -->
+			<p id="titre"></p>
+			<p id="resume"></p>	
+			<!-- bouton de detail du meuilleur film -->
+			<button id="button_meuilleur_film">
+				Détail films
+			</button>
+		</div>	
+
+<!-- ##################################################################################### -->
+		<!-- Code des films les mieux notés -->
+		<header>
+			<h1>Films les mieux notés </h1>
+			<p>
+				<!-- Fléche de la carrousel -->
+				<span class="fleche">&#139;</span>
+				<span class="fleche">&#155;</span>
+			</p>
+		</header>
+		<!-- le code Js met ici les données qu'il vas recupérer de l'API  -->
+		<section id="section">
+		</section>
+
+<!-- ##################################################################################### -->
+		<!-- Code des Meuilleur films d'animation -->
+		<header>
+			<h1>Meuilleur films d'animation</h1>
+			<p>
+				<!-- Fléche de la carrousel -->
+				<span class="fleche1">&#139;</span>
+				<span class="fleche1">&#155;</span>
+			</p>
+		</header>
+		<!-- le code Js met ici les données qu'il vas recupérer de l'API  -->
+		<section id="section1">
+		</section>
+
+<!-- ##################################################################################### -->
+		<!-- Code des Meuilleur films d'action -->
+		<header>
+			<h1>Meuilleur films d'action </h1>
+			<p>
+				<!-- Fléche de la carrousel -->
+				<span class="fleche2">&#139;</span>
+				<span class="fleche2">&#155;</span>
+			</p>
+		</header>
+		<!-- le code Js met ici les données qu'il vas recupérer de l'API  -->
+		<section id="section2">
+		</section>
+
+<!-- ##################################################################################### -->
+		<!-- Code des Meuilleur films biography -->
+		<header>
+			<h1>Meuilleur biography </h1>
+			<p>
+				<!-- Fléche de la carrousel -->
+				<span class="fleche3">&#139;</span>
+				<span class="fleche3">&#155;</span>
+			</p>
+		</header>
+		<!-- le code Js met ici les données qu'il vas recupérer de l'API  -->
+		<section id="section3">
+		</section>
+	</main>
+</body>
+</html>

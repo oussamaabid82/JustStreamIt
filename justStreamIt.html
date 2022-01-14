@@ -2,33 +2,75 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" />
         <title>JustStreamIt</title>
-        <img src="images/logo.png">
-        <h1>JustStreamIt</h1>
+        <script src="script.js" defer></script>
     </head>
 
-    <nav>
-        <ul>
-            <li>Acceuil</li>
-            <li>Catégorie</li>
-        </ul>
-    </nav>
     <body>
-        <section>
-           <h1>Films les mieux notés</h1> 
-        </section>
+        <div id="bloc_page">
+            <header>
+                <div class="logo">
+                    <img src="images/logo.png" alt="logo_de_JustStreamIt">
+                </div>
 
-         <section>
-           <h1>Catégorie 1</h1> 
-        </section>
+                <nav>
+                    <ul>
+                        <li><a href="">Acceuil</a></li>
+                        <li><a href="">Catégorie</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="films">
 
-         <section>
-           <h1>Catégorie 2</h1> 
-        </section>
+                <h1>Meuilleur Film</h1>
+                <script>
+                    var imgMeuilleurFilm = fetchBestFilm("/titles/?imdb_score_min=9.6&page=1", affichage_meuilleur_film, 0);
+                </script>
+                <div class="meuilleur_film">
+                    <h1 id= "titre_meuilleur_film"></h1>
+                    <div class="affichage_meuilleur_film">
+                        <a href=""><img src="" alt="affiche meuilleur_film" id="affichage_meuilleur_film"></a>
+                    </div>
+                    <div class="boutton">
+                        <button class=bouton>Info</button>
+                    </div>
+                    
+                </div>
 
-         <section>
-           <h1>Catégorie 3</h1> 
-        </section>
+                <section >
 
+                    <h1>Films les mieux notés</h1>
+                    <article class="films_les_mieux_notés">
+                        <div class="film">
+                            <a href="#"><img src="#" alt="affiche_Films_les_mieux_notés" id = "affiche_films_les_mieux_notés"></a>
+                        </div>
+                    </article>
+
+                    <h1>Films des années 1919</h1>
+                    <article class="films_des_années_1919">
+                        <div class="film">
+                            <a href="#"><img src="#" alt="affiche_Films_des_années_1919" id = "affiche_films_des_années_1919"></a>
+                        </div>
+                    </article>
+
+                    <h1>Meuilleur films d'aventure</h1>
+                    <article class="meuilleur_films_d'aventure">
+                        <div class="film">
+                            <a href="#"><img src="#" alt="affiche_Meuilleur_films_aventure" id="affiche_meuilleur_films_aventure"></a>
+                        </div>  
+                    </article> 
+
+                    <h1>Films d'animation de l'année 2020</h1>
+                    <article class="films_d'animation_de_l'année_2020">
+                        <div class="film">
+                            <a href="#"><img src="#" alt="affiche Films_d'animation_de_l'année_2020" id="films_d_animation_de_l_année_2020"></a>
+                        </div> 
+                    </article>
+                    
+                </section>
+            </div>  
+        </div>
+        
     </body>
 </html>
